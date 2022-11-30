@@ -1,0 +1,31 @@
+@import url("https://fonts.cdnfonts.com/css/montserrat");
+
+:root{
+  --grey-black: #0a0a0b;
+  --white: #ffffff;
+  --light-brown: #cfb995;
+}
+.body {
+  font-family: "Montserrat", sans-serif;
+  @media screen and (max-width: 800px) {
+    padding: 10px;
+  }
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+

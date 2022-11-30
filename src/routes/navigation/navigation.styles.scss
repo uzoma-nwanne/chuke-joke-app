@@ -1,0 +1,63 @@
+header {
+    background-color: var(--grey-black);
+    height: 50px;
+    nav{
+      .mobile-menu-icon{
+        display: none;
+      }
+      ul {
+        margin-left: 40%;
+        margin-right: 10%;
+        display: flex;
+        justify-content: space-around;
+        width: 50vw;
+        align-items: center;
+        list-style: none;
+        padding-top:15px ;
+        li{
+          a{
+            font-family: Montserrat;
+            font-size:15px;
+            font-weight: 600;
+            height:19px;
+            width: 158px;
+            color: var(--white);
+          }
+          img{
+            margin-left: 10px;
+            margin-top: -15px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }  
+  }
+  
+  .hero-area{
+    background-image: url(../../assets/01/bitmap@3x.png);
+     /* Position and center the image to scale nicely on all screens */
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     height: 40vh;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     .hero-text{
+      h4{
+        font-family: Montserrat Regular;
+        font-size: 48px;
+        line-height:72px;
+        color: var(--light-brown);
+        text-align: center;
+        margin-top: -40px;
+        }
+        p{
+          color: var(--white);
+          font-size: 30px;
+          margin-top: -60px;
+        }
+     }
+   
+  }
