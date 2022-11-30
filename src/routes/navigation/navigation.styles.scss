@@ -5,24 +5,21 @@ header {
       .mobile-menu-icon{
         display: none;
       }
-      ul {
+      .nav-links-container {
         margin-left: 40%;
         margin-right: 10%;
         display: flex;
         justify-content: space-around;
         width: 50vw;
         align-items: center;
-        list-style: none;
         padding-top:15px ;
-        li{
-          a{
-            font-family: Montserrat;
-            font-size:15px;
-            font-weight: 600;
-            height:19px;
-            width: 158px;
-            color: var(--white);
-          }
+        .link{
+          font-family: Montserrat;
+          font-size:15px;
+          font-weight: 600;
+          height:19px;
+          width: 180px;
+          color: var(--white);
           img{
             margin-left: 10px;
             margin-top: -15px;
@@ -59,5 +56,16 @@ header {
           margin-top: -60px;
         }
      }
+      input{
+        background: transparent;
+        width: 350px;
+        border: 2px solid var(--white);
+        border-radius:5px;
+        padding: 10px;
+        background-image: url(../../assets/01/search-copy.png);
+        background-repeat: no-repeat;
+        background-position: right;
+        font-size: 16px;
+      }
    
   }

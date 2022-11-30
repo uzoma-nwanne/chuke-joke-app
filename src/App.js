@@ -1,11 +1,14 @@
-//import logo from "./logo.svg";
+import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Navigation from "./routes/navigation/navigation.component";
 
 
 function App() {
   return (
-    <Navigation/>
+    <Routes>
+        <Route path="/" element={<Navigation/>}></Route>
+    </Routes>
+    
   );
 }
 
