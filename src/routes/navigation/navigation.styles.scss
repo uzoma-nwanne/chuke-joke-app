@@ -1,3 +1,6 @@
+.App{
+  margin-bottom: 20px;
+}
 header {
     background-color: var(--grey-black);
     height: 50px;
@@ -55,7 +58,7 @@ header {
     position: absolute;
     z-index: 101;
     top: 70px;
-    left: 0;
+    left: 10px;
     background: var(--grey-black);
     width: 80%;
     height: calc(100vh - 70px);
@@ -155,18 +158,6 @@ header {
   }
 }
 
-.main{
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  @media screen and (max-width:900px){
-    max-width: 900px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-  }
-}
 
 
   footer{

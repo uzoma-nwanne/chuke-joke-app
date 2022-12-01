@@ -1,60 +1,19 @@
 import { useState, Fragment, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 
-import { fetchData } from "../../utils/fetch.utils";
-import PaginationContainer from "../../components/pagination-container/pagination-container.component";
-import JokeComponentContainer from "../../components/joke-component-container/joke-container.component";
 
 import arrowImg from "../../assets/01/path_2.png";
 import personImg from "../../assets/01/shape.png";
 import submitImg from "../../assets/01/path-copy-4@2x.png";
 
 import "./navigation.styles.scss";
-import CategoriesContainer from "../../components/categories-container/categories-container.component";
 
-const defaultFormFields = {
-  searchString: "",
-};
+
 const Navigation = () => {
   const d = new Date();
   const year = d.getFullYear();
   const [searchField, setSearchField] = useState("");
-  const [categories, setCategories] = useState([]);
-  const [allJokes, setAllJokes] = useState([]);
-  const [filteredJokes, setFilteredJokes] = useState([]);
   const [isNavBarOpen, setIsNavBarOpen] = useState(false);
-
-  const start = useSelector((state) => state.paginationCounter.start);
-  const end = useSelector((state) => state.paginationCounter.end);
-  const dispatch = useDispatch();
-  //const [selectedCategory, setSelectedCategory] = useState(categories[0]);
-  console.log(`Start :${start}, end : ${end}`);
-  // update categories
-  useEffect(() => {
-    const getCategories = async () => {
-      const categories = await fetchData(
-        "https://api.chucknorris.io/jokes/categories"
-      );
-      categories.push("Uncategorized");
-      setCategories(categories);
-    };
-    getCategories();
-  }, []);
-
-  //get All Jokes
-  useEffect(() => {
-    const getAllJokes = async () => {
-      const allJokes = await fetchData(
-        "https://api.chucknorris.io/jokes/search?query=all"
-      );
-      setAllJokes(allJokes);
-      setFilteredJokes(
-        allJokes.result.filter((joke, index) => index >= start && index < end)
-      );
-    };
-    getAllJokes();
-  }, [start, end]);
 
   return (
     <Fragment>
@@ -121,11 +80,7 @@ const Navigation = () => {
         </div>
       </div>
 
-      <div className="main">
-        <CategoriesContainer categories={categories} />
-        <JokeComponentContainer filteredJokes={filteredJokes} />
-      </div>
-      <PaginationContainer categories={categories} start={start} end={end} />
+    
       {/* Other page contents are displayed here using router*/}
       <Outlet />
 
