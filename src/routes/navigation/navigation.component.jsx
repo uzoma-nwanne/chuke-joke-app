@@ -3,9 +3,8 @@ import { Outlet, Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 
 import { fetchData } from "../../utils/fetch.utils";
-import { loadMore, loadPrevious } from "../../features/pagination-slice";
-import MyButton from "../../components/button/button.component";
 import PaginationContainer from "../../components/pagination-container/pagination-container.component";
+import JokeComponentContainer from "../../components/joke-component-container/joke-container.component";
 
 import arrowImg from "../../assets/01/path_2.png";
 import personImg from "../../assets/01/shape.png";
@@ -24,14 +23,13 @@ const Navigation = () => {
  const [searchField, setSearchField] = useState("");
   const[categories, setCategories] = useState([]);
   const [allJokes, setAllJokes] = useState([]);
+  const [filteredJokes, setFilteredJokes] = useState([])
 
   const start = useSelector((state) => state.paginationCounter.start);
   const end = useSelector((state) => state.paginationCounter.end);
-  console.log(`Start ${start}`);
-  console.log(`End is ${end}`);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   //const [selectedCategory, setSelectedCategory] = useState(categories[0]);
-
+console.log(`Start :${start}, end : ${end}`);
   // update categories
   useEffect(() => {
     const getCategories = async () => {
@@ -49,11 +47,13 @@ const Navigation = () => {
     const getAllJokes = async () =>{
       const allJokes = await fetchData("https://api.chucknorris.io/jokes/search?query=all");
       setAllJokes(allJokes);
+      setFilteredJokes(allJokes.result.filter((joke,index)=> (index >= start && index < end)));
     }
     getAllJokes();
-  }, []);
+  }, [start,end]);
+  
 
-//console.log(allJokes);
+
 
   return (
     <Fragment>
@@ -97,10 +97,9 @@ const Navigation = () => {
 
       <div className="main">
         <CategoriesContainer categories={categories}/>
-
-        <PaginationContainer categories={categories} start={start} end={end}/>
+        <JokeComponentContainer filteredJokes={filteredJokes} />    
       </div>
-
+      <PaginationContainer categories={categories} start={start} end={end}/>
       {/* Other page contents are displayed here using router*/}
       <Outlet />
 

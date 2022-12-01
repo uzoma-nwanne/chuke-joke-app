@@ -3,7 +3,7 @@ import './button.styles.scss';
 
 const MyButton = ({label, icon , color, bg}) => {
     return(
-        <button style={{color:color, backgroundColor:bg}}> {label} <span><img src={icon}/></span></button>
+        <button style={{color:color, backgroundColor:bg}} className="my-button"> {label} <span className='button-span'> <img src={icon}/></span></button>
     );
 }
 
