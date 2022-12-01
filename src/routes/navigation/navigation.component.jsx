@@ -39,16 +39,16 @@ const Navigation = () => {
                   </span>
                 </Link>
               </div>
-              <button class="toggle-button" onClick={() => setIsNavBarOpen(!isNavBarOpen)}>
-                  <span class="toggle-button__bar"></span>
-                  <span class="toggle-button__bar"></span>
-                  <span class="toggle-button__bar"></span>
+              <button className="toggle-button" onClick={() => setIsNavBarOpen(!isNavBarOpen)}>
+                  <span className="toggle-button__bar"></span>
+                  <span className="toggle-button__bar"></span>
+                  <span className="toggle-button__bar"></span>
                 </button>
             </nav>
           </div>
         </header>
         <nav className={isNavBarOpen? "open mobile-nav": "mobile-nav" } >
-          <div class="mobile-nav__items">
+          <div className="mobile-nav__items">
             <Link to="/" className="mobile-nav__item">
               SO FUNKTIONEIRTS
             </Link>

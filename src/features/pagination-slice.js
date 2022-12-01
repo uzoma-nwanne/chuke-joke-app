@@ -12,6 +12,7 @@ export const paginationSlice = createSlice({
     loadMore: (state) => {
       state.start += 6
       state.end += 6;
+      console.log(state.start);
     },
     loadPrevious: (state) => {
         state.start -= 6

@@ -41,13 +41,15 @@ const Home = () => {
     getAllJokes();
   }, [start, end]);
 
+  {console.log(filteredJokes);
+  }
   return (
     <Fragment>
       <div className="main">
         <CategoriesContainer categories={categories} />
         <JokeComponentContainer filteredJokes={filteredJokes} />
       </div>
-      <PaginationContainer categories={categories} start={start} end={end} />
+      <PaginationContainer categories={categories} start={start} end={end}  allJokes={allJokes}/>
     </Fragment>
   );
 };

@@ -1,33 +1,33 @@
 import "./pagination-container.styles.scss";
-import MyButton from "../button/button.component";
+import Button from "../button/button.component";
 import moreIcon from "../../assets/01/path-copy-7.png";
 import lessIcon from "../../assets/01/path-copy-8.png";
 import { loadMore, loadPrevious } from "../../features/pagination-slice";
-import { useSelector, useDispatch } from 'react-redux'
+import {useDispatch } from 'react-redux'
 
 
-const PaginationContainer = ({categories, start, end}) => {
+const PaginationContainer = ({categories, start, end, allJokes}) => {
     const dispatch = useDispatch();
   return (
     <div className="pagination">
-      {start === 0 ? (
-        <MyButton
+      {start > 0 ? (
+        <Button
           label={"View Previous"}
           icon={lessIcon}
           color={"#0a0a0b"}
           bg={"#ffffff"}
-          onClick ={()=> loadPrevious()}
+          onClick ={()=> dispatch(loadPrevious())}
         />
       ) : (
         <p></p>
       )}
-      {end < categories.length ? (
-        <MyButton
+      {end <  1400 ? (
+        <Button
           label={"View More"}
           icon={moreIcon}
           color={"#0a0a0b"}
           bg={"#ffffff"}
-          onClick={()=>loadMore()}
+          onClick={()=>dispatch(loadMore())}
         />
       ) : (
         <p></p>
