@@ -3,13 +3,13 @@ import "./categories-container.styles.scss";
 
 const CategoriesContainer = ({ categories }) => {
   const color = [
-    "#FF0000",
+    "red",
     "blue",
-    "black",
+    "gold",
     "yellow",
     "purple",
-    "cyan",
-    "ash ",
+    "grey",
+    "fuschia",
     "green",
   ];
   const total = categories.length;

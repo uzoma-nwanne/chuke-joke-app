@@ -1,11 +1,17 @@
 import { useState, Fragment, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
 
 import { fetchData } from "../../utils/fetch.utils";
+import { loadMore, loadPrevious } from "../../features/pagination-slice";
+import MyButton from "../../components/button/button.component";
+import PaginationContainer from "../../components/pagination-container/pagination-container.component";
 
 import arrowImg from "../../assets/01/path_2.png";
 import personImg from "../../assets/01/shape.png";
 import submitImg from "../../assets/01/path-copy-4@2x.png";
+
+
 import "./navigation.styles.scss";
 import CategoriesContainer from "../../components/categories-container/categories-container.component";
 
@@ -17,7 +23,14 @@ const Navigation = () => {
  const year = d.getFullYear();
  const [searchField, setSearchField] = useState("");
   const[categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+  const [allJokes, setAllJokes] = useState([]);
+
+  const start = useSelector((state) => state.paginationCounter.start);
+  const end = useSelector((state) => state.paginationCounter.end);
+  console.log(`Start ${start}`);
+  console.log(`End is ${end}`);
+  const dispatch = useDispatch()
+  //const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
   // update categories
   useEffect(() => {
@@ -25,10 +38,23 @@ const Navigation = () => {
       const categories = await fetchData(
         "https://api.chucknorris.io/jokes/categories"
       );
+      categories.push("Uncategorized");
       setCategories(categories);
     };
     getCategories(); 
   }, []);
+
+  //get All Jokes
+  useEffect(() =>{
+    const getAllJokes = async () =>{
+      const allJokes = await fetchData("https://api.chucknorris.io/jokes/search?query=all");
+      setAllJokes(allJokes);
+    }
+    getAllJokes();
+  }, []);
+
+//console.log(allJokes);
+
   return (
     <Fragment>
       <div className="App">
@@ -69,11 +95,11 @@ const Navigation = () => {
         </div>
       </div>
 
-      <section className="main">
-        <div className="container">
+      <div className="main">
         <CategoriesContainer categories={categories}/>
-        </div>
-      </section>
+
+        <PaginationContainer categories={categories} start={start} end={end}/>
+      </div>
 
       {/* Other page contents are displayed here using router*/}
       <Outlet />
