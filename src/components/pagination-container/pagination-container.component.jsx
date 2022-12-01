@@ -6,10 +6,8 @@ import { loadMore, loadPrevious } from "../../features/pagination-slice";
 import { useSelector, useDispatch } from 'react-redux'
 
 
-
 const PaginationContainer = ({categories, start, end}) => {
     const dispatch = useDispatch();
-    console.log(`End is ${end}`)
   return (
     <div className="pagination">
       {start === 0 ? (
