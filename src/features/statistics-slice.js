@@ -16,7 +16,7 @@ export const statisticsSlice = createSlice({
         if(jokeExists){
             jokeExists.likes += 1;
         }else{
-            state.jokeList.push({id: newJoke.id, likes: 1, dislikes:0 })
+            state.jokeList.push({id: newJoke.id, value: newJoke.value, likes: 1, dislikes:0 })
         }
       }, 
       
@@ -27,7 +27,7 @@ export const statisticsSlice = createSlice({
         if(jokeExists){
             jokeExists.dislikes +=1;
         }else{
-            state.jokeList.push({id: newJoke.id, likes: 0, dislikes:1 })
+            state.jokeList.push({id: newJoke.id, value: newJoke.value, likes: 0, dislikes:1 })
         }
 
       },

@@ -9,7 +9,7 @@ import downVoteIcon from "../../assets/02/hand-copy.png";
 import nextIcon from "../../assets/02/path-copy-3.png"
 import prevIcon from "../../assets/02/path-copy-reverse-3.png"
 import "./joke-footer.styles.scss";
-const JokeFooter = ({joke}) => {
+const JokeFooter = ({joke,filteredJokes}) => {
     const dispatch = useDispatch();
     const jokeList = useSelector((state) => state.jokeStatistics.jokeList);
     const count = useSelector((state) => state.paginationCounter.count);
@@ -33,7 +33,7 @@ const JokeFooter = ({joke}) => {
     }
 
     const handleNext = ()=>{
-      if(count <  jokeList.length - 1){
+      if(count <  filteredJokes.length - 1){
         dispatch(nextCount());
       }else{
         dispatch(resetCount())
