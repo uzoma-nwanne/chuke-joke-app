@@ -1,19 +1,34 @@
 import { useState, Fragment, useEffect } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-
+import { setSearch } from "../../features/search-slice";
 import arrowImg from "../../assets/01/path_2.png";
 import personImg from "../../assets/01/shape.png";
 import submitImg from "../../assets/01/path-copy-4@2x.png";
+import { fetchData } from "../../utils/fetch.utils";
 
 import "./navigation.styles.scss";
-
 
 const Navigation = () => {
   const d = new Date();
   const year = d.getFullYear();
   const [searchField, setSearchField] = useState("");
   const [isNavBarOpen, setIsNavBarOpen] = useState(false);
+  const [jokes, setJokes] = useState([]);
+ const dispatch = useDispatch();
+ const navigate = useNavigate();
+
+
+  const handleSearchClick = (e) =>{
+    e.preventDefault();
+    dispatch(setSearch(searchField.toLocaleLowerCase()));
+    navigate("/search");
+  }
+ 
+  const handleSearchChange = (e)=>{
+    setSearchField(e.target.value);
+  }
 
   return (
     <Fragment>
@@ -39,15 +54,18 @@ const Navigation = () => {
                   </span>
                 </Link>
               </div>
-              <button className="toggle-button" onClick={() => setIsNavBarOpen(!isNavBarOpen)}>
-                  <span className="toggle-button__bar"></span>
-                  <span className="toggle-button__bar"></span>
-                  <span className="toggle-button__bar"></span>
-                </button>
+              <button
+                className="toggle-button"
+                onClick={() => setIsNavBarOpen(!isNavBarOpen)}
+              >
+                <span className="toggle-button__bar"></span>
+                <span className="toggle-button__bar"></span>
+                <span className="toggle-button__bar"></span>
+              </button>
             </nav>
           </div>
         </header>
-        <nav className={isNavBarOpen? "open mobile-nav": "mobile-nav" } >
+        <nav className={isNavBarOpen ? "open mobile-nav" : "mobile-nav"}>
           <div className="mobile-nav__items">
             <Link to="/" className="mobile-nav__item">
               SO FUNKTIONEIRTS
@@ -72,15 +90,18 @@ const Navigation = () => {
             <h4>The Joke Bible</h4>
             <p>Daily Laughs for you and yours</p>
           </div>
+          <form>
           <input
             type="text"
             placeholder="How can we make you laugh today?"
-            value=""
+            value={searchField}
+            onChange={handleSearchChange}
           ></input>
+          <button type="button" className="search" onClick={handleSearchClick}></button>
+          </form>
         </div>
       </div>
 
-    
       {/* Other page contents are displayed here using router*/}
       <Outlet />
 

@@ -27,6 +27,7 @@ const PaginationContainer = ({categories, start, end, allJokes}) => {
           icon={moreIcon}
           color={"#0a0a0b"}
           bg={"#ffffff"}
+          labelFirst ={true}
           onClick={()=>dispatch(loadMore())}
         />
       ) : (

@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import "./category-button.styles.scss";
 
 
-const CategoryButton = ({category, color}) => {
+
+
+const CategoryButton = ({category, color, onClick}) => {
     return(
-    <div className="category-div" style={{ backgroundColor : color}}>{category}</div>
+    <button className="category-div" style={{ backgroundColor : color}} type="button" onClick={onClick} value={category} >{category}</button>
     );
 }
 

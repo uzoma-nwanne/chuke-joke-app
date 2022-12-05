@@ -4,4 +4,9 @@
     width:115px;
     text-transform: capitalize;
     text-align: center;
+    padding: 5px;
+}
+
+.category-div:hover{
+    transform: scale(1.2);
 }

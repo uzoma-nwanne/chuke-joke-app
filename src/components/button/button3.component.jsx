@@ -1,21 +1,20 @@
 import "./button.styles.scss";
 
-const Button = ({ label, icon, color, bg, onClick }) => {
+const Button3 = ({ label, icon, color, bg, onClick }) => {
   return (
     <button
       style={{ color: color, backgroundColor: bg }}
-      className="my-button"
+      className="my-button2"
       onClick={onClick}
       type="button"
     >
-      {" "}
-      {label}{" "}
-      <span className="button-span">
-        {" "}
+     {label}
+      <span className="button-span2">
         <img src={icon} />
-      </span>
+      </span>{" "}
+      
     </button>
   );
 };
 
-export default Button;
+export default Button3;

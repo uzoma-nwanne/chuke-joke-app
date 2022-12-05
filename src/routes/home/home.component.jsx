@@ -1,11 +1,12 @@
-import { Fragment , useState, useEffect} from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { Fragment, useState, useEffect } from "react";
+import { useSelector} from "react-redux";
 
 import { fetchData } from "../../utils/fetch.utils";
 import PaginationContainer from "../../components/pagination-container/pagination-container.component";
 import JokeComponentContainer from "../../components/joke-component-container/joke-container.component";
 import CategoriesContainer from "../../components/categories-container/categories-container.component";
 
+import "./home.styles.scss";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
@@ -14,7 +15,6 @@ const Home = () => {
 
   const start = useSelector((state) => state.paginationCounter.start);
   const end = useSelector((state) => state.paginationCounter.end);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const getCategories = async () => {
@@ -41,15 +41,20 @@ const Home = () => {
     getAllJokes();
   }, [start, end]);
 
-  {console.log(filteredJokes);
-  }
   return (
     <Fragment>
-      <div className="main">
-        <CategoriesContainer categories={categories} />
-        <JokeComponentContainer filteredJokes={filteredJokes} />
+      <div className="home">
+        <div className="main">
+          <CategoriesContainer categories={categories}/>
+          <JokeComponentContainer filteredJokes={filteredJokes} />
+        </div>
+        <PaginationContainer
+          categories={categories}
+          start={start}
+          end={end}
+          allJokes={allJokes}
+        />
       </div>
-      <PaginationContainer categories={categories} start={start} end={end}  allJokes={allJokes}/>
     </Fragment>
   );
 };

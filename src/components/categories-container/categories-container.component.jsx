@@ -1,7 +1,18 @@
+import {useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { setCategory } from '../../features/category-slice';
 import CategoryButton from "../category-button/category-button.component";
 import "./categories-container.styles.scss";
 
-const CategoriesContainer = ({ categories }) => {
+const CategoriesContainer = ({ categories, allJokes }) => {
+  const dispatch =  useDispatch();
+  const navigate = useNavigate();
+  const handleClick = (e)=>{
+    dispatch(setCategory(e.target.value));
+    navigate("/category");
+  }
+
   const color = [
     "red",
     "blue",
@@ -22,7 +33,7 @@ const CategoriesContainer = ({ categories }) => {
         } 
         const myColor = color[no];
         return (
-          <CategoryButton category={category} color={myColor} key={index} />
+          <CategoryButton category={category} color={myColor} key={index} onClick={handleClick} />
         );
       })}
     </div>

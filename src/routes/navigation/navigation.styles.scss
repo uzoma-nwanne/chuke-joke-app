@@ -133,17 +133,31 @@ header {
           margin-top: -60px;
         }
      }
+     form{
+      display:flex;
+
       input{
         background: transparent;
         width: 350px;
         border: 2px solid var(--white);
         border-radius:5px;
         padding: 10px;
-        background-image: url(../../assets/01/search-copy.png);
         background-repeat: no-repeat;
         background-position: right;
         font-size: 16px;
+        color: var(--white);
       }
+      .search{
+        background: transparent;
+        background-image: url("../../assets/01/search-copy.png");
+        width: 50px;
+        height:50px;
+        background-repeat: no-repeat;
+        background-position: right;
+        margin-left: -60px;
+        border: none;
+      }
+     }
    
   }
 
@@ -151,9 +165,14 @@ header {
     .hero-area{
       max-width:900px;
       background-image: url(../../assets/01/bitmap.png);
-      height:30vh;
+      height:40vh;
       p{
         text-align: center;
+      }
+      form{
+        input{
+          width:300px;
+        }
       }
   }
 }
